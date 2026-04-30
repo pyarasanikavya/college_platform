@@ -12,12 +12,12 @@ const colleges = [
   { id: 3, name: "IIIT Hyderabad", location: "Hyderabad", fees: "3,00,000", rating: 4.7 },
 ];
 
-// all colleges
+// GET all
 app.get("/api/colleges", (req, res) => {
   res.json(colleges);
 });
 
-// single college
+// GET by id
 app.get("/api/colleges/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const college = colleges.find(c => c.id === id);
@@ -29,6 +29,9 @@ app.get("/api/colleges/:id", (req, res) => {
   res.json(college);
 });
 
-app.listen(5000, () => {
-  console.log("Server running on http://localhost:5000");
+// ✅ THIS PART GOES AT THE END
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log("Server running on port", PORT);
 });
